@@ -1,0 +1,26 @@
+### 条件渲染
+### 简介
+- v-if
+- v-else-if
+- v-else
+```
+<div id="demo1">
+			<p v-if='result == 0'>成绩未公布</p>
+			<p v-else-if='result <60'>{{result}}分，成绩不及格</p>
+			<p v-else>{{result}}分，成绩及格</p>
+			<button @click='btnresult'>公布考试结果</button>
+		</div>
+		<script type="text/javascript">
+			var demo1 = new Vue({
+				el:'#demo1',
+				data:{
+					result:0
+				},
+				methods:{
+					btnresult:function(){
+						this.result = Math.round(Math.random()*100);
+					}
+				}
+			})
+		</script>
+```

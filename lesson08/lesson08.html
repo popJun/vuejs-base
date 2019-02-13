@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>元素显示</title>
+	</head>
+	<body>
+	<div id = 'demo1'>
+		<p v-show='result'>你看到见我</p>
+		<button @click='showResult'>显示</button>
+	</div>
+	<script type="text/javascript">
+		var demo1 = new Vue({
+			el:'#demo1',
+			data:{
+				result:false
+			},
+			methods:{
+				showResult:function(){
+					this.result = !this.result;
+				}
+			}
+		})
+	</script>
+	</body>
+</html>

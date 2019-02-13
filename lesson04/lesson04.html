@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件化应用构建</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id = 'demo1'>
+			<ol>
+			<video-item v-for='item in videos' v-bind:video='item'></video-item>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			Vue.component('video-item',{
+				props:['video'],
+				template:'<li>{{video.title}}</li>'
+			})
+			var demo1 = new Vue({
+				el:'#demo1',
+				data:{
+					videos:[{title:'流浪地球'},{title:'疯狂外星人'}]
+				}
+			})
+		</script>
+	</body>
+</html>

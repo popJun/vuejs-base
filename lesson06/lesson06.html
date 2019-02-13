@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>class绑定</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	 <style scoped type="text/css">
+	   .pcolor{
+		   color:red;
+	   }	
+	</style> 
+	</head>
+	<body>
+	   <!-- 为class绑定属性 -->
+	  <div id ='demo1'>
+		  <p v-bind:class="{pcolor:iscolor}">我是红色</p>
+		  <p :class="{pcolor:iscolor}">我是红色</p>
+          <button @click='changeColor'>改变class</button>
+	  </div>
+	  <!-- 为class绑定对象 -->
+	  <div id = 'demo2'>
+		  <p :class='myclass'>我是红色</p>
+		  <button @click='changeColor'>改变class</button>
+	  </div>
+	  <script type="text/javascript">
+		 <!-- 为class绑定属性 --> 
+		  var demo1 = new Vue({
+			  el:'#demo1',
+			  data:{
+				  iscolor:true
+			  },
+			  methods:{
+				  changeColor:function(){
+					  this.iscolor = !this.iscolor;
+				  }
+			  }
+		  })
+		<!-- 为class绑定对象 -->
+		  var demo2 = new Vue({
+			 el:'#demo2',
+			 data:{
+				myclass:{
+					pcolor:true
+				} 
+			 },
+			 methods:{
+				changeColor:function(){
+					this.myclass.pcolor = !this.myclass.pcolor;
+				} 
+			 }
+		  })
+	  </script>	  
+	</body>
+</html>

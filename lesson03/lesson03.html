@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>条件与循环</title>
+	</head>
+	<body>
+		<!-- v-if和v-for的综合使用 -->
+	  <div id="demo1">
+		  <p v-if="seen">2019年最佳影片</p>
+		  <ol>
+			  <li v-for="(video,index) in videos">
+		        ({{index+1}}){{video.title}}/{{video.star}}
+			  </li>
+		  </ol>
+	  </div>	
+	   <script type="text/javascript">
+		   <!-- v-if和v-for的综合使用 -->
+		   var demo1 = new Vue({
+			   el:'#demo1',
+			   data:{
+				   seen:true,
+				   videos:[{title:'流浪地球',star:'5'},{title:'疯狂外星人',star:'4'}]
+			   }
+		   })
+	   </script>
+	</body>
+</html>

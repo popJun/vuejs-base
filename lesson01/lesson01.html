@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>主要介绍一些简单的插值</title>
+	</head>
+	<body>
+		<!-- 第一个实例 -->
+		<div id= "demo1">
+			<p>{{mes1}}</p>
+		</div>
+		<!-- 插值的使用 v-once -->
+		<div id= 'demo2'>
+			<p v-once>{{mes2}}</p>
+			<p>{{mes3}}</p>
+		</div>
+		<!-- 输出html代码 v-html -->
+		<div id = 'demo3'>
+			<p v-html='htmlText'> </p>
+		</div>
+		<!-- v-bind的使用 可省略v-bind 直接使用:+属性来代替-->
+		<div id = 'demo4'>
+		   <h2 v-bind:id='vid' :class='vclass' :title='vtitle'>v-bind的使用</h2>
+		</div>
+		<!-- JavaScript表达式 -->
+		<div id ='demo5'>
+       <p>{{mes4.toLowerCase()}}</p>			
+		</div>
+		<!-- 过滤器 -->
+		<div id ='demo6'>
+			<p>{{mes5 | touppercase | myfilter}}</p>
+		</div>	
+		<!-- js代码 -->
+		<script type="text/javascript">
+			<!-- 第一个实例 -->
+			var demo1 = new Vue({
+				el:'#demo1',
+				data:({
+					'mes1':'hellow Vuejs'
+				})
+			})
+			<!-- 插值的使用 -->
+			var demo2 = new Vue({
+				el:'#demo2',
+				data:({
+					'mes2':'第一赋值',
+					'mes3':'第一次赋值'
+				})
+			})
+			demo2.mes2 = '第二次赋值';
+			demo2.mes3 = '第二次赋值';
+			<!-- 输出html代码 v-html -->
+			var demo3 = new Vue({
+				el:'#demo3',
+				data:({
+					'htmlText':'<font color="red">我是红色</font>'
+				})
+			})
+			<!-- v-bind的使用 -->
+			var demo4 = new Vue({
+				el:'#demo4',
+				data:({
+					vid:'myid',
+					vclass:'myclass',
+					vtitle:'vue v-bind的使用'
+				})
+			})
+			/* JavaScript的使用 */
+			var demo5 = new Vue({
+				el:'#demo5',
+				data:({
+					'mes4':'MYAPP'
+				})
+			})
+			/* 过滤器 */
+			var demo6 = new Vue({
+				el:'#demo6',
+				data:({
+					mes5:'myapp'
+				}),
+				filters:({
+					myfilter(value){
+						return value.split('').reverse().join('');
+					},
+					touppercase(value){
+						return value.toUpperCase();
+					}
+				})
+			})
+			
+		</script>
+		
+	</body>
+</html>

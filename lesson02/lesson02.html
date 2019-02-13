@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title> 计算属性</title>
+	</head>
+	<body>
+	<!-- computed的使用 -->
+	<div id='demo1'>
+		a = {{a}}
+		b = {{b}}
+	</div>
+	<!-- computed get和set方法的使用 -->
+	<div id = 'demo2'>
+	   	{{mes2}}
+	</div>
+	<!-- method的使用 -->
+	<div id ='demo3'>
+		<p>{{mes3}}</p>
+		<button v-on:click='reverseMes'>逆转消息</button>
+	</div>
+	<!-- watch的使用 -->
+	<div id ='demo4'>
+		<input type='text' v-model='firstName'>
+		<input type='text' v-model='lastName'>
+		<p>我的名字是：{{fullName}}</p>
+	</div>
+	<!-- js -->	
+	<script type="text/javascript">
+		<!-- computed的使用 -->
+		var demo1 =new Vue({
+			el:'#demo1',
+			data:{
+				a : 1
+			},
+			computed:{
+				b:function(){
+					return this.a +1;
+				}
+			}
+		})
+		demo1.b = 8;
+		demo1.a = 8;
+		<!-- computed get和set方法的使用 -->
+		 var demo2 = new Vue({
+			 el:'#demo2',
+			 data:{
+				  title: 'my first lesson'
+			 },
+			 computed:{
+				 mes2:{
+					get:function(){
+						return this.title;
+					},
+					//没有加set mes2值无法改变
+					set:function(newValue){
+						 this.title = newValue;
+					}
+				 }				   
+			 }
+		 })
+		 demo2.mes2='my sesson lesson';
+		
+		/* method的使用 */
+		var demo3 = new Vue({
+			el:'#demo3',
+			data:{
+				mes3:'hello VueJs'
+			},
+			methods:{
+				reverseMes:function(){
+					this.mes3 = this.mes3.split('').reverse().join('')
+				}
+			}
+		})
+	<!-- 观察watch的使用 -->
+	  var demo4 = new Vue({
+		  el:'#demo4',
+		  data:{
+			firstName:'wu',
+			lastName:'shaochuan',
+			fullName:'wu shaochuan'
+		  },
+		  watch:{
+			  firstName:function(curVal, oldVal){
+				  this.fullName = curVal + " " + this.lastName ;
+			  },
+			  lastName:function(curVal,oldVal){
+				  this.fullName = this.firstName + " " + curVal;
+			  }
+			}
+	  })	
+	</script>
+	</body>
+</html>
